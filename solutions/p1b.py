@@ -27,5 +27,17 @@ def appearance_count_dict(somelist):
             result[n] = 1
     return result
 
+def similarity_score(l1, l2):
+    """
+    Finds the similarity score between l1 and l2
+    """
+    acd_l2 = appearance_count_dict(l2)
+    score = 0
+    for n in l1:
+        if n in acd_l2:
+            score += n * acd_l2[n]
+    return score
+
 if __name__ == "__main__":
-    example_l1, example_l2 = parse_nums("../data/example_p1a.txt")
+    example = parse_nums("../data/example_p1a.txt")
+    assert similarity_score(*example) == 31
