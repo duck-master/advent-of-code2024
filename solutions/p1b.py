@@ -15,5 +15,17 @@ def parse_nums(input_file):
             l2.append(int(ls[1]))
     return l1, l2
 
+def appearance_count_dict(somelist):
+    """
+    Dict of {number: times it appears}
+    """
+    result = {}
+    for n in somelist:
+        if n in result:
+            result[n] += 1
+        else:
+            result[n] = 1
+    return result
+
 if __name__ == "__main__":
     print("hello world")
