@@ -2,7 +2,7 @@
 Solves https://adventofcode.com/2024/day/1
 """
 
-from p1_utils import parse_nums, example, test_data
+from p1_utils import example, test_data
 
 def find_diffs(l1, l2):
     """

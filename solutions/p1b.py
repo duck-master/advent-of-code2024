@@ -2,7 +2,7 @@
 Solves https://adventofcode.com/2024/day/1#part2
 """
 
-from p1_utils import parse_nums, example, test_data
+from p1_utils import example, test_data
 
 def appearance_count_dict(somelist):
     """
@@ -29,4 +29,4 @@ def similarity_score(l1, l2):
 
 if __name__ == "__main__":
     assert similarity_score(*example) == 31
-    print(similarity_score(*testdata))
+    print(similarity_score(*test_data))
