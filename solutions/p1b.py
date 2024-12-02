@@ -2,7 +2,7 @@
 Solves https://adventofcode.com/2024/day/1#part2
 """
 
-from p1_utils import parse_nums
+from p1_utils import parse_nums, example, test_data
 
 def appearance_count_dict(somelist):
     """
