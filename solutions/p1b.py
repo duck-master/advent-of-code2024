@@ -39,8 +39,8 @@ def similarity_score(l1, l2):
     return score
 
 if __name__ == "__main__":
-    example = parse_nums("../data/example_p1a.txt")
+    example = parse_nums("../data/example_p1.txt")
     assert similarity_score(*example) == 31
 
-    testdata = parse_nums("../data/test_p1a.txt")
+    testdata = parse_nums("../data/test_p1.txt")
     print(similarity_score(*testdata))
