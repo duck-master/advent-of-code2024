@@ -28,4 +28,4 @@ def appearance_count_dict(somelist):
     return result
 
 if __name__ == "__main__":
-    print("hello world")
+    example_l1, example_l2 = parse_nums("../data/example_p1a.txt")
