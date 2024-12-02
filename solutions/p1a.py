@@ -24,8 +24,8 @@ def find_diffs(l1, l2):
     return sum(abs(a - b) for a, b in zip(sorted_l1, sorted_l2))
 
 if __name__ == "__main__":
-    example = parse_nums("data/example_p1a.txt")
+    example = parse_nums("../data/example_p1a.txt")
     assert find_diffs(*example) == 11
 
-    test_data = parse_nums("data/test_p1a.txt")
+    test_data = parse_nums("../data/test_p1a.txt")
     print(find_diffs(*test_data))
