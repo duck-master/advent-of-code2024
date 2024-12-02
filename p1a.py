@@ -26,3 +26,6 @@ def find_diffs(l1, l2):
 if __name__ == "__main__":
     example = parse_nums("data/example_p1a.txt")
     assert find_diffs(*example) == 11
+
+    test_data = parse_nums("data/test_p1a.txt")
+    print(find_diffs(*test_data))
