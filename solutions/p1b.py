@@ -2,7 +2,7 @@
 Solves https://adventofcode.com/2024/day/1#part2
 """
 
-from p1_utils import example, test_data
+from utils import EXAMPLES, TESTS
 
 def appearance_count_dict(somelist):
     """
@@ -28,5 +28,5 @@ def similarity_score(l1, l2):
     return score
 
 if __name__ == "__main__":
-    assert similarity_score(*example) == 31
-    print(similarity_score(*test_data))
+    assert similarity_score(*EXAMPLES[0]) == 31
+    print(similarity_score(*TESTS[0]))

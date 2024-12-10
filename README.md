@@ -12,7 +12,7 @@ my personal attempt at https://adventofcode.com/2024
 * `solutions`
   * `p1a.py`
   * `p1b.py`
-  * `p1_utils.py`
+  * `utils.py`
 
 # How it works
 
