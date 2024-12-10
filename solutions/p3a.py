@@ -26,10 +26,19 @@ def find_muls(program):
 def find_mul_sum(program):
     """
     Finds the sum of all mul(X, Y) instructions in the program
+
+    Args:
+    * program (str): The input program
+
+    Returns:
+    * int: The sum of the found multiplication instructions.
     """
-    #TODO
-    raise NotImplementedError
+    muls_found = find_muls(program)
+    result = 0
+    for x, y in muls_found:
+        result += int(x) * int(y)
+    return result
 
 if __name__ == "__main__":
-    print(find_muls(EXAMPLES[2]))
     assert find_mul_sum(EXAMPLES[2]) == 161
+    print(find_mul_sum(TESTS[2]))
