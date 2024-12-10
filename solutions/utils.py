@@ -5,7 +5,7 @@ Functions:
 * parse_p1(input_lines)
 * parse_p2(input_lines)
 * parse_p3(input_lines)
-* parse_file_group(parsers, file_paths)
+* parse_file_group(parsers, file_ids, filepath_template)
 
 Data:
 * PARSERS
@@ -58,17 +58,19 @@ def parse_p3(input_lines):
     """
     return "".join(input_lines)
 
-def parse_file_group(parsers, file_paths):
+def parse_file_group(parsers, file_ids, filepath_template):
     """
     Parses a group of files at once.
 
     Args:
     * parsers (iterable[callable]): A list of functions.
-    * file_paths (iterable[str]): A list of file paths. 
+    * file_ids (iterable[str]): A list of file paths.
+    * filepath_template (str): A template for the file paths (the id should be named "file_id").
     """
     result = []
     # main loop
-    for parser, filepath in zip(parsers, file_paths):
+    for parser, file_id in zip(parsers, file_ids):
+        filepath = filepath_template.format(file_id = file_id)
         with open(filepath, mode = "r", encoding = "utf-8") as f:
             file_content = f.readlines()
         parsed_content = parser(file_content)
@@ -81,13 +83,21 @@ def parse_file_group(parsers, file_paths):
 PARSERS = [
     parse_p1,
     parse_p2,
+    parse_p3,
     parse_p3
 ]
-NO_PROBLEMS_SOLVED = 3  # increment as needed
-PROBLEM_RANGE = range(1, NO_PROBLEMS_SOLVED + 1)    # if separate data for A and B, change this
-EXAMPLE_FILES = [f"../data/example_p{n}.txt" for n in PROBLEM_RANGE]
-TEST_FILES = [f"../data/test_p{n}.txt" for n in PROBLEM_RANGE]
+
+EXAMPLE_FILE_IDS = ["1", "2", "3a", "3b"]
+TEST_FILE_IDS = ["1", "2", "3", "3"]
 
 # get example and test data
-EXAMPLES = parse_file_group(PARSERS, EXAMPLE_FILES)
-TESTS = parse_file_group(PARSERS, TEST_FILES)
+EXAMPLES = parse_file_group(
+    parsers = PARSERS,
+    file_ids = EXAMPLE_FILE_IDS,
+    filepath_template = "../data/example_p{file_id}.txt"
+    )
+TESTS = parse_file_group(
+    parsers = PARSERS,
+    file_ids = TEST_FILE_IDS,
+    filepath_template = "../data/test_p{file_id}.txt"
+    )
