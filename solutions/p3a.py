@@ -9,13 +9,19 @@ Functions:
 import re
 from utils import EXAMPLES, TESTS
 
+MUL_REGEX = re.compile(r"mul\((\d{1,3}),(\d{1,3})\)")
+
 def find_muls(program):
     """
     Finds instances of mul(X, Y) in the program
-    """
-    # TODO
-    raise NotImplementedError
 
+    Args:
+    * program (str): The input program
+
+    Returns:
+    * list[tuple[int]]: The found multiplication instructions.
+    """
+    return re.findall(MUL_REGEX, program)
 
 def find_mul_sum(program):
     """
@@ -25,4 +31,5 @@ def find_mul_sum(program):
     raise NotImplementedError
 
 if __name__ == "__main__":
+    print(find_muls(EXAMPLES[2]))
     assert find_mul_sum(EXAMPLES[2]) == 161
