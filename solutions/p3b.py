@@ -18,10 +18,27 @@ def find_mul_sum(program):
     """
     Finds the sum of the instructions found
     """
-    # TODO
-    raise NotImplementedError
+    # setup
+    instructions = find_instructions(program)
+    should_mul = True
+    result = 0
+
+    # main loop
+    for i, x, y in instructions:
+        if i == "don't":
+            should_mul = False
+        elif i == "do":
+            should_mul = True
+        elif i == "":
+            if should_mul:
+                result += int(x) * int(y)
+        else:
+            raise ValueError(f"Malformed instruction {i}")
+
+    # return
+    return result
 
 
 if __name__ == "__main__":
-    print(find_instructions(EXAMPLES[2]))
-    assert find_mul_sum(EXAMPLES[2]) == 48
+    assert find_mul_sum(EXAMPLES[3]) == 48
+    print(find_mul_sum(TESTS[3]))
