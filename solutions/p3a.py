@@ -19,7 +19,7 @@ def find_muls(program):
     * program (str): The input program
 
     Returns:
-    * list[tuple[int]]: The found multiplication instructions.
+    * list[tuple[str]]: The found multiplication instructions.
     """
     return re.findall(MUL_REGEX, program)
 
