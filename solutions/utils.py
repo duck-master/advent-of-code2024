@@ -7,6 +7,12 @@ Functions:
 
 Data:
 * PARSERS
+* NO_PROBLEMS_SOLVED
+* PROBLEM_RANGE
+* EXAMPLE_FILES
+* TEST_FILES
+* EXAMPLES
+* TESTS
 """
 
 def parse_p1(input_lines):
@@ -26,8 +32,8 @@ def parse_file_group(parsers, file_paths):
     Parses a group of files at once.
 
     Args:
-    * parsers (list[callable]): A list of functions.
-    * file_paths (list[str]): A list of file paths. 
+    * parsers (iterable[callable]): A list of functions.
+    * file_paths (iterable[str]): A list of file paths. 
     """
     result = []
     # main loop
@@ -39,12 +45,16 @@ def parse_file_group(parsers, file_paths):
     return result
 
 
-
+# some auxiliary constants to prepare EXAMPLES and TESTS
 # expand as needed
 PARSERS = [
     parse_p1
 ]
+NO_PROBLEMS_SOLVED = 1  # increment as needed
+PROBLEM_RANGE = range(1, NO_PROBLEMS_SOLVED + 1)    # if separate data for A and B, change this
+EXAMPLE_FILES = [f"../data/example_p{n}.txt" for n in PROBLEM_RANGE]
+TEST_FILES = [f"../data/test_p{n}.txt" for n in PROBLEM_RANGE]
 
-#TODO: refactor
-#example = parse_nums("../data/example_p1.txt")
-#test_data = parse_nums("../data/test_p1.txt")
+# get example and test data
+EXAMPLES = parse_file_group(PARSERS, EXAMPLE_FILES)
+TESTS = parse_file_group(PARSERS, TEST_FILES)
