@@ -44,8 +44,12 @@ def parse_p2(input_lines):
     Returns:
     * list[list[int]]: The output data.
     """
-    # TODO
-    raise NotImplementedError
+    result = []
+    for l in input_lines:
+        num_strings = l.split(" ")
+        nums = [int(n) for n in num_strings]
+        result.append(nums)
+    return result
 
 def parse_file_group(parsers, file_paths):
     """
@@ -68,9 +72,10 @@ def parse_file_group(parsers, file_paths):
 # some auxiliary constants to prepare EXAMPLES and TESTS
 # expand as needed
 PARSERS = [
-    parse_p1
+    parse_p1,
+    parse_p2
 ]
-NO_PROBLEMS_SOLVED = 1  # increment as needed
+NO_PROBLEMS_SOLVED = 2  # increment as needed
 PROBLEM_RANGE = range(1, NO_PROBLEMS_SOLVED + 1)    # if separate data for A and B, change this
 EXAMPLE_FILES = [f"../data/example_p{n}.txt" for n in PROBLEM_RANGE]
 TEST_FILES = [f"../data/test_p{n}.txt" for n in PROBLEM_RANGE]
