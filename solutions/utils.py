@@ -3,6 +3,7 @@ Defines the utility function parse_nums
 
 Functions:
 * parse_p1(input_lines)
+* parse_p2(input_lines)
 * parse_file_group(parsers, file_paths)
 
 Data:
@@ -17,7 +18,13 @@ Data:
 
 def parse_p1(input_lines):
     """
-    Parses a list of lines
+    Parses problem 1 (each line has two numbers, and the result is two lists).
+
+    Args:
+    * input_lines (list[str]): The input lines.
+
+    Returns:
+    * tuple[list[int]]: The output data. The tuple has exactly 2 items.
     """
     l1 = []
     l2 = []
@@ -26,6 +33,19 @@ def parse_p1(input_lines):
         l1.append(int(ls[0]))
         l2.append(int(ls[1]))
     return l1, l2
+
+def parse_p2(input_lines):
+    """
+    Parses problem 2 (each line becomes a list of numbers, for a 2D list in total).
+
+    Args:
+    * input_lines (list[str]): The input lines.
+
+    Returns:
+    * list[list[int]]: The output data.
+    """
+    # TODO
+    raise NotImplementedError
 
 def parse_file_group(parsers, file_paths):
     """
