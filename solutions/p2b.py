@@ -6,12 +6,18 @@ Functions:
 * count_new_safe_reports(reports)
 """
 
-from utils import EXAMPLES
+from utils import EXAMPLES, TESTS
 from p2a import is_report_safe
 
 def is_report_now_safe(report):
     """
     Determines whether the report is safe with at most one bad level
+
+    Args:
+    * report (list[int]): The report
+
+    Returns:
+    * bool: Whether the report has this property
     """
     # try the original report
     if is_report_safe(report):
@@ -30,13 +36,19 @@ def is_report_now_safe(report):
 def count_new_safe_reports(reports):
     """"
     Counts the number of safe reports
+
+    Args:
+    * reports (list[list[int]]): The list of reports.
+
+    Returns:
+    * int: The total number of safe reports
     """
-    # TODO
-    raise NotImplementedError
+    count = 0
+    for report in reports:
+        if is_report_now_safe(report):
+            count += 1
+    return count
 
 if __name__ == "__main__":
-    # debug logic
-    for example_report in EXAMPLES[1]:
-        print(is_report_now_safe(example_report))
-
     assert count_new_safe_reports(EXAMPLES[1]) == 4
+    print(count_new_safe_reports(TESTS[1]))
