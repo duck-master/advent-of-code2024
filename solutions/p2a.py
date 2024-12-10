@@ -61,8 +61,7 @@ def is_report_safe(report):
     Returns:
     * bool: Whether the report is safe.
     """
-    # TODO
-    raise NotImplementedError
+    return is_monotonic(report) and change_within_bounds(report)
 
 
 def count_safe_reports(reports):
@@ -75,14 +74,13 @@ def count_safe_reports(reports):
     Returns:
     * int: The total number of safe reports
     """
-    #TODO
-    raise NotImplementedError
+    count = 0
+    for report in reports:
+        if is_report_safe(report):
+            count += 1
+    return count
 
 
 if __name__ == "__main__":
-    # debug logic
-    for example_report in EXAMPLES[1]:
-        print(is_monotonic(example_report), change_within_bounds(example_report))
-
-    # main logic
     assert count_safe_reports(EXAMPLES[1]) == 2
+    print(count_safe_reports(TESTS[1]))
