@@ -4,7 +4,7 @@ Defines the utility function parse_nums
 Functions:
 * parse_p1(input_lines)
 * parse_p2(input_lines)
-* parse_p3(input_lines)
+* concatenator(input_lines)
 * parse_file_group(parsers, file_ids, filepath_template)
 
 Data:
@@ -52,7 +52,7 @@ def parse_p2(input_lines):
         result.append(nums)
     return result
 
-def parse_p3(input_lines):
+def concatenator(input_lines):
     """
     Concatenates everything
     """
@@ -83,12 +83,13 @@ def parse_file_group(parsers, file_ids, filepath_template):
 PARSERS = [
     parse_p1,
     parse_p2,
-    parse_p3,
-    parse_p3
+    concatenator,
+    concatenator,
+    concatenator
 ]
 
-EXAMPLE_FILE_IDS = ["1", "2", "3a", "3b"]
-TEST_FILE_IDS = ["1", "2", "3", "3"]
+EXAMPLE_FILE_IDS = ["1", "2", "3a", "3b", "4"]
+TEST_FILE_IDS = ["1", "2", "3", "3", "4"]
 
 # get example and test data
 EXAMPLES = parse_file_group(
