@@ -3,6 +3,7 @@ Solves https://adventofcode.com/2024/day/2
 
 Functions:
 * is_monotonic(report)
+* change_within_bounds(report)
 * is_report_safe(report)
 * count_safe_reports(reports)
 """
@@ -33,6 +34,21 @@ def is_monotonic(report):
         if (next_val > prev_val) != should_increase:
             return False
 
+    return True
+
+def change_within_bounds(report):
+    """
+    Determines if the consecutive differences are at most 3 in absolute value.
+
+    Args:
+    * report (list[int]): The report
+
+    Returns:
+    * bool: Whether the report has this property
+    """
+    for next_val, prev_val in zip(report[1:], report[:-1]):
+        if abs(next_val - prev_val) > 3:
+            return False
     return True
 
 def is_report_safe(report):
@@ -66,7 +82,7 @@ def count_safe_reports(reports):
 if __name__ == "__main__":
     # debug logic
     for example_report in EXAMPLES[1]:
-        print(is_monotonic(example_report))
+        print(is_monotonic(example_report), change_within_bounds(example_report))
 
     # main logic
     assert count_safe_reports(EXAMPLES[1]) == 2
