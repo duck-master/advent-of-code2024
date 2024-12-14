@@ -8,8 +8,12 @@ def find_Xes(grid):
     """
     finds all X's
     """
-    # TODO
-    raise NotImplementedError
+    result = []
+    for x, row in enumerate(grid):
+        for y, cell in enumerate(row):
+            if cell == "X":
+                result.append((x, y))
+    return result
 
 def find_neighbors(coords, n):
     """
@@ -34,4 +38,7 @@ def find_XMAS_count(grid):
 
 
 if __name__ == "__main__":
+    # debugging logic
+    print(find_Xes(EXAMPLES[4]))
+    # main test
     print(find_XMAS_count(EXAMPLES[4]))
