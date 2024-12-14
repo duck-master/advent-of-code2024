@@ -13,7 +13,7 @@ def find_Xes(grid):
     for x, row in enumerate(grid):
         for y, cell in enumerate(row):
             if cell == "X":
-                result.append((x, y))
+                result.append([(x, y)])
     return result
 
 def next_range(x, n):
@@ -46,8 +46,19 @@ def extend_path(grid, current_paths, next_letter):
     """
     extends all paths in current_paths if they can include the next letter
     """
-    # TODO
-    raise NotImplementedError
+    # setup
+    grid_size = len(grid)
+    result = []
+
+    # main loop
+    for path in current_paths:
+        last_coord = path[-1]
+        for n_x, n_y in find_neighbors(last_coord, grid_size):
+            if grid[n_x][n_y] == next_letter:
+                result.append(path + [(n_x, n_y)])
+
+    # return
+    return result
 
 def find_XMAS_count(grid):
     """
@@ -59,6 +70,9 @@ def find_XMAS_count(grid):
 
 if __name__ == "__main__":
     # debugging logic
-    print(find_Xes(EXAMPLES[4]))
+    stage1 = find_Xes(EXAMPLES[4])
+    stage2 = extend_path(EXAMPLES[4], stage1, "M")
+    print(stage1)
+
     # main test
     print(find_XMAS_count(EXAMPLES[4]))
