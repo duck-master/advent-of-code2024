@@ -31,11 +31,7 @@ def find_XMAS_count(grid):
     """
     finds the number of all paths that read as XMAS
     """
-    result = find_Xes(grid)
-    for letter in "MAS":
-        result = extend_path(grid, result, letter)
-    return result
-
+    raise NotImplementedError
 
 if __name__ == "__main__":
     # debugging logic
