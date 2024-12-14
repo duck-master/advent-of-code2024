@@ -2,7 +2,6 @@
 Solves https://adventofcode.com/2024/day/4
 """
 
-from itertools import product
 from utils import EXAMPLES
 
 def find_Xes(grid):
@@ -16,63 +15,31 @@ def find_Xes(grid):
                 result.append([(x, y)])
     return result
 
-def next_range(x, n):
+def extend_path(start, direction, length, n):
     """
-    range(x - 1, x + 1) intersect range(0, n) as a list
+    extends a path in the corresponding direction
     """
-    if x < 0:
-        return None
-    elif x == 0:
-        return [0, 1]
-    elif x < n - 1:
-        return [x - 1, x, x + 1]
-    elif x == n - 1:
-        return [n - 2, n - 1]
-    else:
-        return None
+    raise NotImplementedError
 
-def find_neighbors(coords, n):
-    """
-    Finds neighbors of the given coords (in N by N board)
-    """
-    x, y = coords
-    return list(product(
-        next_range(x, n),
-        next_range(y, n)
-        ))
-
-
-def extend_path(grid, current_paths, next_letter):
+def extend_paths(grid, current_paths, next_letters):
     """
     extends all paths in current_paths if they can include the next letter
     """
-    # setup
-    grid_size = len(grid)
-    result = []
-
-    # main loop
-    for path in current_paths:
-        last_coord = path[-1]
-        for n_x, n_y in find_neighbors(last_coord, grid_size):
-            if grid[n_x][n_y] == next_letter:
-                result.append(path + [(n_x, n_y)])
-
-    # return
-    return result
+    raise NotImplementedError
 
 def find_XMAS_count(grid):
     """
     finds the number of all paths that read as XMAS
     """
-    # TODO
-    raise NotImplementedError
+    result = find_Xes(grid)
+    for letter in "MAS":
+        result = extend_path(grid, result, letter)
+    return result
 
 
 if __name__ == "__main__":
     # debugging logic
     stage1 = find_Xes(EXAMPLES[4])
-    stage2 = extend_path(EXAMPLES[4], stage1, "M")
-    print(stage1)
 
     # main test
-    print(find_XMAS_count(EXAMPLES[4]))
+    pprint(find_XMAS_count(EXAMPLES[4]))
