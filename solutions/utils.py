@@ -5,6 +5,7 @@ Functions:
 * parse_p1(input_lines)
 * parse_p2(input_lines)
 * concatenator(input_lines)
+* parse_p4(input_lines)
 * parse_file_group(parsers, file_ids, filepath_template)
 
 Data:
@@ -58,6 +59,15 @@ def concatenator(input_lines):
     """
     return "".join(input_lines)
 
+def parse_p4(input_lines):
+    """
+    Creates a 2D array of characters where each line is a row
+    """
+    result = []
+    for l in input_lines:
+        result.append(list(l.strip()))
+    return result
+
 def parse_file_group(parsers, file_ids, filepath_template):
     """
     Parses a group of files at once.
@@ -85,7 +95,7 @@ PARSERS = [
     parse_p2,
     concatenator,
     concatenator,
-    concatenator
+    parse_p4
 ]
 
 EXAMPLE_FILE_IDS = ["1", "2", "3a", "3b", "4"]
