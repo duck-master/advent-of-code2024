@@ -2,6 +2,7 @@
 Solves https://adventofcode.com/2024/day/4
 """
 
+from itertools import product
 from utils import EXAMPLES
 
 def find_Xes(grid):
@@ -15,12 +16,31 @@ def find_Xes(grid):
                 result.append((x, y))
     return result
 
+def next_range(x, n):
+    """
+    range(x - 1, x + 1) intersect range(0, n) as a list
+    """
+    if x < 0:
+        return None
+    elif x == 0:
+        return [0, 1]
+    elif x < n - 1:
+        return [x - 1, x, x + 1]
+    elif x == n - 1:
+        return [n - 2, n - 1]
+    else:
+        return None
+
 def find_neighbors(coords, n):
     """
     Finds neighbors of the given coords (in N by N board)
     """
-    # TODO
-    raise NotImplementedError
+    x, y = coords
+    return list(product(
+        next_range(x, n),
+        next_range(y, n)
+        ))
+
 
 def extend_path(grid, current_paths, next_letter):
     """

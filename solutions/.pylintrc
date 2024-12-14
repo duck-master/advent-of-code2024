@@ -1,2 +1,2 @@
 [MESSAGES-CONTROL]
-disable=invalid-name, superfluous-parens
+disable=invalid-name, superfluous-parens, no-else-return
