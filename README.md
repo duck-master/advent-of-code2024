@@ -9,10 +9,22 @@ my personal attempt at https://adventofcode.com/2024
 * `data`
   * `example_p1.txt`
   * `test_p1.txt`
+  * `example_p2.txt`
+  * `test_p2.txt`
+  * `example_p3.txt`
+  * `test_p3.txt`
+  * `example_p4.txt`
+  * `test_p4.txt`
 * `solutions`
   * `p1a.py`
   * `p1b.py`
+  * `p2a.py`
+  * `p2b.py`
+  * `p3a.py`
+  * `p3b.py`
+  * `p4a.py`
   * `utils.py`
+  * `.pylintrc`
 
 # How it works
 
