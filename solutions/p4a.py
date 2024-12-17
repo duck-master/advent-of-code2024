@@ -16,14 +16,14 @@ DIRECTIONS = {
     (1, 1),
 }
 
-def find_Xes(grid):
+def find_chars(grid, char_to_find):
     """
-    finds all X's
+    finds all instances of the given character
     """
     result = []
     for x, row in enumerate(grid):
         for y, cell in enumerate(row):
-            if cell == "X":
+            if cell == char_to_find:
                 result.append((x, y))
     return result
 
@@ -58,7 +58,7 @@ def find_XMASes(grid):
     returns a list
     """
     result = []
-    all_Xes = find_Xes(grid)
+    all_Xes = find_chars(grid, "X")
     for start in all_Xes:
         for direction in DIRECTIONS:
             possible_path = extend_path(start, direction, 4)

@@ -3,13 +3,7 @@ Solves https://adventofcode.com/2024/day/4#part2
 """
 
 from utils import EXAMPLES
-
-def find_As(grid):
-    """
-    Finds all A's within the grid
-    """
-    #TODO
-    raise NotImplementedError
+from p4a import find_chars
 
 def read_cross(grid, center):
     """
