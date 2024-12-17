@@ -2,7 +2,7 @@
 Solves https://adventofcode.com/2024/day/4#part2
 """
 
-from utils import EXAMPLES
+from utils import EXAMPLES, TESTS
 from p4a import find_chars
 
 CROSS_DIRECTIONS = [
@@ -57,8 +57,8 @@ def find_X_MAS_count(grid):
     """
     finds the total number of two MASes in a cross
     """
-    #TODO
-    raise NotImplementedError
+    return len(find_X_MASes(grid))
 
 if __name__ == "__main__":
-    print(find_X_MAS_count(EXAMPLES[4]))
+    assert find_X_MAS_count(EXAMPLES[4]) == 9
+    print(find_X_MAS_count(TESTS[4]))
