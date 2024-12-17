@@ -20,7 +20,7 @@ def read_cross(grid, center):
     x_c, y_c = center
 
     # return None if out of bounds
-    if x_c not in range(1, n - 1) or y_c not in range(n - 1):
+    if x_c not in range(1, n - 1) or y_c not in range(1, n - 1):
         return None
 
     # main logic
