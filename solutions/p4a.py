@@ -15,15 +15,15 @@ def find_Xes(grid):
                 result.append([(x, y)])
     return result
 
-def extend_path(start, direction, length, n):
+def extend_path(start, direction, length):
     """
     extends a path in the corresponding direction
     """
     raise NotImplementedError
 
-def extend_paths(grid, current_paths, next_letters):
+def read_path(grid, path):
     """
-    extends all paths in current_paths if they can include the next letter
+    Reads the sequence of symbols in the path
     """
     raise NotImplementedError
 
