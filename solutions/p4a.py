@@ -2,6 +2,7 @@
 Solves https://adventofcode.com/2024/day/4
 """
 
+from pprint import pprint
 from utils import EXAMPLES
 
 def find_Xes(grid):
@@ -19,18 +20,21 @@ def extend_path(start, direction, length):
     """
     extends a path in the corresponding direction
     """
+    #TODO
     raise NotImplementedError
 
 def read_path(grid, path):
     """
     Reads the sequence of symbols in the path
     """
+    #TODO
     raise NotImplementedError
 
 def find_XMAS_count(grid):
     """
     finds the number of all paths that read as XMAS
     """
+    #TODO
     raise NotImplementedError
 
 if __name__ == "__main__":
