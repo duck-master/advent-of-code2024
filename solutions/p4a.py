@@ -2,8 +2,7 @@
 Solves https://adventofcode.com/2024/day/4
 """
 
-from pprint import pprint
-from utils import EXAMPLES
+from utils import EXAMPLES, TESTS
 
 #hardcode all the valid directions
 DIRECTIONS = {
@@ -71,12 +70,8 @@ def find_XMAS_count(grid):
     """
     finds the number of all paths that read as XMAS
     """
-    return len(
+    return len(find_XMASes(grid))
 
 if __name__ == "__main__":
-    # debugging logic
-    stage1 = find_Xes(EXAMPLES[4])
-    pprint(stage1)
-
-    # main test
-    pprint(find_XMAS_count(EXAMPLES[4]))
+    assert find_XMAS_count(EXAMPLES[4]) == 18
+    print(find_XMAS_count(TESTS[4]))
