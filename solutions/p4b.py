@@ -12,6 +12,13 @@ CROSS_DIRECTIONS = [
     (1, 1)
     ]
 
+VALID_CROSSES = {
+    "MSMS",
+    "MMSS",
+    "SSMM",
+    "SMSM"
+    }
+
 def read_cross(grid, center):
     """
     Reads the grid cells in a cross centered at the given center
@@ -27,16 +34,24 @@ def read_cross(grid, center):
     result = []
     for x_d, y_d in CROSS_DIRECTIONS:
         result.append(grid[x_c + x_d][y_c + y_d])
-    return result
+    return "".join(result)
 
 def find_X_MASes(grid):
     """
     finds all instances of two MASes in a cross
-    returns a list
+    returns a list of centers
     """
-    #TODO
-    raise NotImplementedError
+    all_As = find_chars(grid, "A")
+    result = []
 
+    # main loop
+    for center in all_As:
+        cross = read_cross(grid, center)
+        if cross in VALID_CROSSES:
+            result.append(center)
+
+    # return
+    return result
 
 def find_X_MAS_count(grid):
     """
