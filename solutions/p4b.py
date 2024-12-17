@@ -18,13 +18,15 @@ def read_cross(grid, center):
     """
     n = len(grid)
     x_c, y_c = center
+
+    # return None if out of bounds
+    if x_c not in range(1, n - 1) or y_c not in range(n - 1):
+        return None
+
+    # main logic
     result = []
     for x_d, y_d in CROSS_DIRECTIONS:
-        x_n = x_c + x_d
-        y_n = y_c + y_d
-        if x_n not in range(n) or y_n not in range(n):
-            return None
-        result.append(grid[x_n][y_n])
+        result.append(grid[x_c + x_d][y_c + y_d])
     return result
 
 def find_X_MASes(grid):
