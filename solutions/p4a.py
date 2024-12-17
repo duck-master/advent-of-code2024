@@ -50,15 +50,28 @@ def read_path(grid, path):
         if x not in range(n) or y not in range(n):
             return None
 
-        result.append(grid[y][x])
+        result.append(grid[x][y])
+    return "".join(result)
+
+def find_XMASes(grid):
+    """
+    finds all paths that read as XMAS
+    returns a list
+    """
+    result = []
+    all_Xes = find_Xes(grid)
+    for start in all_Xes:
+        for direction in DIRECTIONS:
+            possible_path = extend_path(start, direction, 4)
+            if read_path(grid, possible_path) == "XMAS":
+                result.append(possible_path)
     return result
 
 def find_XMAS_count(grid):
     """
     finds the number of all paths that read as XMAS
     """
-    #TODO
-    raise NotImplementedError
+    return len(
 
 if __name__ == "__main__":
     # debugging logic
