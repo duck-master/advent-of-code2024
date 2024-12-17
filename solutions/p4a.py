@@ -43,8 +43,15 @@ def read_path(grid, path):
     """
     Reads the sequence of symbols in the path
     """
-    #TODO
-    raise NotImplementedError
+    n = len(grid)
+    result = []
+    for x, y in path:
+        # ignore paths that go outside bounds
+        if x not in range(n) or y not in range(n):
+            return None
+
+        result.append(grid[y][x])
+    return result
 
 def find_XMAS_count(grid):
     """
