@@ -2,6 +2,7 @@
 Defines the utility function parse_nums
 
 Functions:
+* parse_num_group(niput_lines, separator)
 * parse_p1(input_lines)
 * parse_p2(input_lines)
 * concatenator(input_lines)
@@ -18,6 +19,19 @@ Data:
 * EXAMPLES
 * TESTS
 """
+
+def parse_num_group(input_lines, separator):
+    """
+    Parses a group of numbers.
+    Each line is expected to contain numbers, separated by the given symbol.
+    Helper function for parse_p2 and parse_p5
+    """
+    result = []
+    for line in input_lines:
+        clean_line = line.strip()
+        nums = [int(n) for n in clean_line.split(separator)]
+        result.append(nums)
+    return result
 
 def parse_p1(input_lines):
     """
@@ -47,12 +61,7 @@ def parse_p2(input_lines):
     Returns:
     * list[list[int]]: The output data.
     """
-    result = []
-    for l in input_lines:
-        num_strings = l.split(" ")
-        nums = [int(n) for n in num_strings]
-        result.append(nums)
-    return result
+    return parse_num_group(input_lines, separator = " ")
 
 def concatenator(input_lines):
     """
@@ -79,19 +88,9 @@ def parse_p5(input_lines):
     first_half = input_lines[:first_empty_index]
     second_half = input_lines[(first_empty_index + 1):]
 
-    # parse the first half
-    result1 = []
-    for line in first_half:
-        clean_line = line.strip()
-        nums = [int(n) for n in clean_line.split("|")]
-        result1.append(nums)
-
-    # parse the second half
-    result2 = []
-    for line in second_half:
-        clean_line = line.strip()
-        nums = [int(n) for n in clean_line.split(",")]
-        result2.append(nums)
+    # parse each half separately
+    result1 = parse_num_group(first_half, separator = "|")
+    result2 = parse_num_group(second_half, separator = ",")
 
     # return
     return (result1, result2)
