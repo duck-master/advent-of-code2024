@@ -2,7 +2,7 @@
 Solves https://adventofcode.com/2024/day/5
 """
 
-from utils import EXAMPLES
+from utils import EXAMPLES, TESTS
 
 def check_update_in_order(update, ordering_rules):
     """
@@ -37,15 +37,14 @@ def get_sum_of_correct_updates(input_data):
     """
     Gets the sum of the correct updates
     """
-    # TODO
-    raise NotImplementedError
+    ordering_rules, updates = input_data
+    result = 0
+    for update in updates:
+        if check_update_in_order(update, ordering_rules):
+            result += get_middle_number(update)
+    return result
 
 
 if __name__ == "__main__":
-    # debug logic
-    test_rules = EXAMPLES[5][0]
-    test_updates = EXAMPLES[5][1]
-    test_check = [check_update_in_order(test_update, test_rules) for test_update in test_updates]
-    assert test_check == [True, True, True, False, False, False]
-    # main logic
-    print(get_sum_of_correct_updates(EXAMPLES[5]))
+    assert get_sum_of_correct_updates(EXAMPLES[5]) == 143
+    print(get_sum_of_correct_updates(TESTS[5]))
