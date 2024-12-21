@@ -6,6 +6,7 @@ Functions:
 * parse_p2(input_lines)
 * concatenator(input_lines)
 * parse_p4(input_lines)
+* parse_p5(input_lines)
 * parse_file_group(parsers, file_ids, filepath_template)
 
 Data:
@@ -68,6 +69,34 @@ def parse_p4(input_lines):
         result.append(list(l.strip()))
     return result
 
+def parse_p5(input_lines):
+    """
+    Splits in two based on the first empty line.
+    Both halves parsed as a list of lists.
+    """
+    # split in two
+    first_empty_index = input_lines.index("\n")
+    first_half = input_lines[:first_empty_index]
+    second_half = input_lines[(first_empty_index + 1):]
+
+    # parse the first half
+    result1 = []
+    for line in first_half:
+        clean_line = line.strip()
+        nums = [int(n) for n in clean_line.split("|")]
+        result1.append(nums)
+
+    # parse the second half
+    result2 = []
+    for line in second_half:
+        clean_line = line.strip()
+        nums = [int(n) for n in clean_line.split(",")]
+        result2.append(nums)
+
+    # return
+    return (result1, result2)
+
+
 def parse_file_group(parsers, file_ids, filepath_template):
     """
     Parses a group of files at once.
@@ -95,11 +124,12 @@ PARSERS = [
     parse_p2,
     concatenator,
     concatenator,
-    parse_p4
+    parse_p4,
+    parse_p5
 ]
 
-EXAMPLE_FILE_IDS = ["1", "2", "3a", "3b", "4"]
-TEST_FILE_IDS = ["1", "2", "3", "3", "4"]
+EXAMPLE_FILE_IDS = ["1", "2", "3a", "3b", "4", "5"]
+TEST_FILE_IDS = ["1", "2", "3", "3", "4", "5"]
 
 # get example and test data
 EXAMPLES = parse_file_group(
