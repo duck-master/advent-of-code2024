@@ -28,8 +28,9 @@ def get_middle_number(update):
     """
     Gets the middle number of the update
     """
-    # TODO
-    raise NotImplementedError
+    len_update = len(update)
+    middle = (len_update - 1)//2
+    return update[middle]
 
 
 def get_sum_of_correct_updates(input_data):
