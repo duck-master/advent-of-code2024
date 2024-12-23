@@ -53,12 +53,19 @@ def move_guard_one_step(board, guard_position, direction):
     else:
         return (new_position, direction)
 
+def out_of_bounds(n, position):
+    """
+    Determines if the position is out of bounds
+    """
+    x, y = position
+    return (x not in range(n)) or (y not in range(n))
+
 def simulate_guard(board, guard_position, direction):
     """
     Simulate the guard until it leaves the mapped area
     Returns the list of positions visited in order
     """
-    #TODO
+    # TODO
     raise NotImplementedError
 
 
