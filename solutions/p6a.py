@@ -2,7 +2,7 @@
 Solves https://adventofcode.com/2024/day/6
 """
 
-from utils import EXAMPLES
+from utils import EXAMPLES, TESTS
 
 RIGHT_TURN = {
     (-1, 0): (0, 1),
