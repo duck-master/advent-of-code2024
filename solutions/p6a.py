@@ -20,6 +20,15 @@ def visualize_board(board, guard_position):
         result += "\n"
     return result
 
+def add_2D_vecs(vec1, vec2):
+    """
+    Adds two 2D vectors
+    Helper function for move_guard_one_step
+    """
+    x1, y1 = vec1
+    x2, y2 = vec2
+    return (x1 + x2, y1 + y2)
+
 def move_guard_one_step(board, guard_position, direction):
     """
     Moves the guard exactly one step
