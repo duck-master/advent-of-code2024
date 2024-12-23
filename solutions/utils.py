@@ -114,7 +114,7 @@ def parse_p6(input_lines):
         board.append(row)
 
     # return (hardcode direction for now)
-    return (board, guard, (1, 0))
+    return (board, guard, (-1, 0))
 
 
 def parse_file_group(parsers, file_ids, filepath_template):
