@@ -97,8 +97,9 @@ def find_position_count_visited(board, guard_position, direction):
     """
     Finds the number of positions visited
     """
-    #TODO
-    raise NotImplementedError
+    positions_visited = simulate_guard(board, guard_position, direction)
+    return len(set(positions_visited))
 
 if __name__ == "__main__":
-    print(find_position_count_visited(*EXAMPLES[6]))
+    assert find_position_count_visited(*EXAMPLES[6]) == 41
+    print(find_position_count_visited(*TESTS[6]))
