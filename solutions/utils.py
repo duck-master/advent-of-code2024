@@ -95,6 +95,27 @@ def parse_p5(input_lines):
     # return
     return (result1, result2)
 
+def parse_p6(input_lines):
+    """
+    Creates a tuple of a 2D array of booleans and a 2-tuple
+    (first represents board, second represents guard)
+    """
+    board = []
+    for x, line in enumerate(input_lines):
+        row = []
+        for y, char in enumerate(line):
+            if char == ".":
+                row.append(False)
+            elif char == "#":
+                row.append(True)
+            elif char == "^":
+                row.append(False)
+                guard = (x, y)
+        board.append(row)
+
+    # return
+    return (board, guard)
+
 
 def parse_file_group(parsers, file_ids, filepath_template):
     """
@@ -124,11 +145,12 @@ PARSERS = [
     concatenator,
     concatenator,
     parse_p4,
-    parse_p5
+    parse_p5,
+    parse_p6
 ]
 
-EXAMPLE_FILE_IDS = ["1", "2", "3a", "3b", "4", "5"]
-TEST_FILE_IDS = ["1", "2", "3", "3", "4", "5"]
+EXAMPLE_FILE_IDS = ["1", "2", "3a", "3b", "4", "5", "6"]
+TEST_FILE_IDS = ["1", "2", "3", "3", "4", "5", "6"]
 
 # get example and test data
 EXAMPLES = parse_file_group(
