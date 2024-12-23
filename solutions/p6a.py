@@ -4,6 +4,22 @@ Solves https://adventofcode.com/2024/day/6
 
 from utils import EXAMPLES
 
+def visualize_board(board, guard_position):
+    """
+    Visualizes the current board state. For debugging purposes
+    """
+    result = ""
+    for x, row in enumerate(board):
+        for y, cell in enumerate(row):
+            if (x, y) == guard_position:
+                result += "G"
+            elif board[x][y]:
+                result += "#"
+            else:
+                result += "."
+        result += "\n"
+    return result
+
 def move_guard_one_step(board, guard_position, direction):
     """
     Moves the guard exactly one step
