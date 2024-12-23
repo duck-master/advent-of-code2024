@@ -4,6 +4,13 @@ Solves https://adventofcode.com/2024/day/6
 
 from utils import EXAMPLES
 
+RIGHT_TURN = {
+    (-1, 0): (0, 1),
+    (0, 1): (1, 0),
+    (1, 0): (0, -1),
+    (0, -1): (-1, 0)
+}
+
 def visualize_board(board, guard_position):
     """
     Visualizes the current board state. For debugging purposes
@@ -13,7 +20,7 @@ def visualize_board(board, guard_position):
         for y, cell in enumerate(row):
             if (x, y) == guard_position:
                 result += "G"
-            elif board[x][y]:
+            elif cell:
                 result += "#"
             else:
                 result += "."
@@ -34,9 +41,17 @@ def move_guard_one_step(board, guard_position, direction):
     Moves the guard exactly one step
     Returns (new guard position, new direction)
     """
-    # TODO
-    raise NotImplementedError
+    new_position = add_2D_vecs(guard_position, direction)
+    npx, npy = new_position
 
+    # if position occupied, turn instead
+    if board[npx][npy]:
+        new_direction = RIGHT_TURN[direction]
+        return (guard_position, new_direction)
+
+    # otherwise, go in that direction
+    else:
+        return (new_position, direction)
 
 def simulate_guard(board, guard_position, direction):
     """
