@@ -97,8 +97,8 @@ def parse_p5(input_lines):
 
 def parse_p6(input_lines):
     """
-    Creates a tuple of a 2D array of booleans and a 2-tuple
-    (first represents board, second represents guard)
+    Returns a tuple
+    (first is board; second is guard; third is direction)
     """
     board = []
     for x, line in enumerate(input_lines):
@@ -113,8 +113,8 @@ def parse_p6(input_lines):
                 guard = (x, y)
         board.append(row)
 
-    # return
-    return (board, guard)
+    # return (hardcode direction for now)
+    return (board, guard, (1, 0))
 
 
 def parse_file_group(parsers, file_ids, filepath_template):
