@@ -41,8 +41,13 @@ def move_guard_one_step(board, guard_position, direction):
     Moves the guard exactly one step
     Returns (new guard position, new direction)
     """
+    n = len(board)
     new_position = add_2D_vecs(guard_position, direction)
     npx, npy = new_position
+
+    # if new position out of bounds, then return None
+    if out_of_bounds(n, new_position):
+        return None
 
     # if position occupied, turn instead
     if board[npx][npy]:
@@ -65,8 +70,27 @@ def simulate_guard(board, guard_position, direction):
     Simulate the guard until it leaves the mapped area
     Returns the list of positions visited in order
     """
-    # TODO
-    raise NotImplementedError
+    # simulation variables
+    result = []
+    current_position = guard_position
+    current_direction = direction
+
+    # main loop
+    while True:
+        next_state = move_guard_one_step(
+            board,
+            current_position,
+            current_direction
+            )
+
+        if next_state is None:
+            break
+
+        current_position, current_direction = next_state
+        result.append(current_position)
+
+    # return
+    return result
 
 
 def find_position_count_visited(board, guard_position, direction):
