@@ -30,4 +30,4 @@ def find_position_count_visited(board, guard_position, direction):
     raise NotImplementedError
 
 if __name__ == "__main__":
-    print(find_position_count_visited(EXAMPLES[5]))
+    print(find_position_count_visited(*EXAMPLES[6]))
